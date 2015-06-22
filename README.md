@@ -4,8 +4,18 @@
 
 ## Usage
 
-**Gradle Or Maven**
-Comming soon
+**Gradle**
+```gradle
+compile 'com.anton46:stepsview:0.0.1'
+````
+**Maven**
+```xml
+<dependency>
+    <groupId>com.anton46</groupId>
+    <artifactId>stepsview</artifactId>
+    <version>0.0.1</version>
+</dependency>
+```
 
 ```xml
  <com.anton46.stepsview.StepsView
