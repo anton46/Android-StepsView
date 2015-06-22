@@ -2,6 +2,29 @@
 
 ![Example image](./image1.png)
 
+## Usage
+
+**Gradle Or Maven**
+Comming soon
+
+```xml
+ <com.anton46.stepsview.StepsView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/stepsView0"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+```        
+
+```java
+mStepsView.setLabels(steps)
+                .setColorIndicator(Color.GREEN)
+                .setBarColor(Color.GRAY)
+                .setLabelColor(Color.BLUE)
+                .setCompletedPosition(0);
+```
+       
+
 Developed by
 ========================
 * Anton Nurdin Tuhadiansyah (anton.work19@gmail.com)
