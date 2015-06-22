@@ -1,6 +1,6 @@
 # Android-StepsView
 
-![Example image](./image1.png)
+![Example image](./image1.png) ![Example image](./image2.png)
 
 ## Usage
 
