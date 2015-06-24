@@ -1,5 +1,5 @@
 # Android-StepsView
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.anton46/stepsview/badge.svg?style=flat)][![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Android--StepsView-green.svg?style=flat)](https://android-arsenal.com/details/1/2021)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.anton46/stepsview/badge.svg?style=flat)](https://maven-badges.herokuapp.com/maven-central/com.anton46/collection-picker/)[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Android--StepsView-green.svg?style=flat)](https://android-arsenal.com/details/1/2021)
 
 ![Example image](./image1.png) ![Example image](./image2.png)
 
