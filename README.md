@@ -28,12 +28,12 @@ compile 'com.anton46:stepsview:0.0.2'
 ```        
 
 ```java
-          mStepsView.setLabels(steps)
-                    .setBarColorIndicator(getContext().getResources().getColor(R.color.material_blue_grey_800))
-                    .setProgressColorIndicator(getContext().getResources().getColor(R.color.orange))
-                    .setLabelColorIndicator(getContext().getResources().getColor(R.color.orange))
-                    .setCompletedPosition(0)
-                    .drawView();
+mStepsView.setLabels(steps)
+        .setBarColorIndicator(getContext().getResources().getColor(R.color.material_blue_grey_800))
+        .setProgressColorIndicator(getContext().getResources().getColor(R.color.orange))
+        .setLabelColorIndicator(getContext().getResources().getColor(R.color.orange))
+        .setCompletedPosition(0)
+        .drawView();
 ```
        
 
