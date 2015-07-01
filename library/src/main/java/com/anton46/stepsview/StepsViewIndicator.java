@@ -23,7 +23,7 @@ public class StepsViewIndicator extends View {
     private float mThumbRadius;
     private float mCircleRadius;
     private float mPadding;
-    private int mThumbColor = Color.YELLOW;
+    private int mProgressColor = Color.YELLOW;
     private int mBarColor = Color.BLACK;
 
     private float mCenterY;
@@ -61,7 +61,7 @@ public class StepsViewIndicator extends View {
         mPadding = 0.5f * THUMB_SIZE;
     }
 
-    public void setSize(int size) {
+    public void setStepSize(int size) {
         mNumOfStep = size;
         invalidate();
     }
@@ -90,7 +90,7 @@ public class StepsViewIndicator extends View {
             mThumbContainerXPosition.add(mLeftX + (i * mDelta));
         }
         mThumbContainerXPosition.add(mRightX);
-        mDrawListener.onFinish();
+        mDrawListener.onReady();
     }
 
     @Override
@@ -108,15 +108,14 @@ public class StepsViewIndicator extends View {
 
     public void setCompletedPosition(int position) {
         mCompletedPosition = position;
-        invalidate();
     }
 
     public void reset() {
         setCompletedPosition(0);
     }
 
-    public void setThumbColor(int thumbColor) {
-        mThumbColor = thumbColor;
+    public void setProgressColor(int progressColor) {
+        mProgressColor = progressColor;
     }
 
     public void setBarColor(int barColor) {
@@ -126,6 +125,7 @@ public class StepsViewIndicator extends View {
     @Override
     protected synchronized void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+        mDrawListener.onReady();
         // Draw rect bounds
         paint.setAntiAlias(true);
         paint.setColor(mBarColor);
@@ -133,7 +133,7 @@ public class StepsViewIndicator extends View {
         paint.setStrokeWidth(2);
 
         selectedPaint.setAntiAlias(true);
-        selectedPaint.setColor(mThumbColor);
+        selectedPaint.setColor(mProgressColor);
         selectedPaint.setStyle(Paint.Style.STROKE);
         selectedPaint.setStrokeWidth(2);
 
@@ -159,7 +159,7 @@ public class StepsViewIndicator extends View {
                     (i <= mCompletedPosition) ? selectedPaint : paint);
 
             if (i == mCompletedPosition) {
-                selectedPaint.setColor(getColorWithAlpha(mThumbColor, 0.2f));
+                selectedPaint.setColor(getColorWithAlpha(mProgressColor, 0.2f));
                 canvas.drawCircle(pos, mCenterY, mCircleRadius * 1.8f, selectedPaint);
             }
         }
@@ -177,6 +177,6 @@ public class StepsViewIndicator extends View {
 
     public interface OnDrawListener {
 
-        public void onFinish();
+        public void onReady();
     }
 }

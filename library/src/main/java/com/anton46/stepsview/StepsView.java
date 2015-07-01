@@ -19,8 +19,10 @@ public class StepsView extends LinearLayout implements StepsViewIndicator.OnDraw
     private StepsViewIndicator mStepsViewIndicator;
     private FrameLayout mLabelsLayout;
     private String[] mLabels;
-    private int mCompletedPosition;
-    private int mLabelColor = Color.BLACK;
+    private int mProgressColorIndicator = Color.YELLOW;
+    private int mLabelColorIndicator = Color.BLACK;
+    private int mBarColorIndicator = Color.BLACK;
+    private int mCompletedPosition = 0;
 
     public StepsView(Context context) {
         this(context, null);
@@ -43,9 +45,42 @@ public class StepsView extends LinearLayout implements StepsViewIndicator.OnDraw
         mLabelsLayout = (FrameLayout) rootView.findViewById(R.id.labels_container);
     }
 
+    public String[] getLabels() {
+        return mLabels;
+    }
+
     public StepsView setLabels(String[] labels) {
         mLabels = labels;
-        mStepsViewIndicator.setSize(mLabels.length);
+        mStepsViewIndicator.setStepSize(labels.length);
+        return this;
+    }
+
+    public int getProgressColorIndicator() {
+        return mProgressColorIndicator;
+    }
+
+    public StepsView setProgressColorIndicator(int progressColorIndicator) {
+        mProgressColorIndicator = progressColorIndicator;
+        mStepsViewIndicator.setProgressColor(mProgressColorIndicator);
+        return this;
+    }
+
+    public int getLabelColorIndicator() {
+        return mLabelColorIndicator;
+    }
+
+    public StepsView setLabelColorIndicator(int labelColorIndicator) {
+        mLabelColorIndicator = labelColorIndicator;
+        return this;
+    }
+
+    public int getBarColorIndicator() {
+        return mBarColorIndicator;
+    }
+
+    public StepsView setBarColorIndicator(int barColorIndicator) {
+        mBarColorIndicator = barColorIndicator;
+        mStepsViewIndicator.setBarColor(mBarColorIndicator);
         return this;
     }
 
@@ -55,27 +90,24 @@ public class StepsView extends LinearLayout implements StepsViewIndicator.OnDraw
 
     public StepsView setCompletedPosition(int completedPosition) {
         mCompletedPosition = completedPosition;
-        mStepsViewIndicator.setCompletedPosition(completedPosition);
+        mStepsViewIndicator.setCompletedPosition(mCompletedPosition);
         return this;
     }
 
-    public StepsView setColorIndicator(int color) {
-        mStepsViewIndicator.setThumbColor(color);
-        return this;
-    }
+    public void drawView() {
+        if (mLabels == null) {
+            throw new IllegalArgumentException("labels must not be null.");
+        }
 
-    public StepsView setBarColor(int color) {
-        mStepsViewIndicator.setBarColor(color);
-        return this;
-    }
+        if (mCompletedPosition < 0 || mCompletedPosition > mLabels.length - 1) {
+            throw new IndexOutOfBoundsException(String.format("Index : %s, Size : %s", mCompletedPosition, mLabels.length));
+        }
 
-    public StepsView setLabelColor(int labelColor) {
-        mLabelColor = labelColor;
-        return this;
+        mStepsViewIndicator.invalidate();
     }
 
     @Override
-    public void onFinish() {
+    public void onReady() {
         drawLabels();
     }
 
@@ -86,7 +118,7 @@ public class StepsView extends LinearLayout implements StepsViewIndicator.OnDraw
             for (int i = 0; i < mLabels.length; i++) {
                 TextView textView = new TextView(getContext());
                 textView.setText(mLabels[i]);
-                textView.setTextColor(mLabelColor);
+                textView.setTextColor(mLabelColorIndicator);
                 textView.setX(indicatorPosition.get(i));
                 textView.setLayoutParams(
                         new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
@@ -100,5 +132,4 @@ public class StepsView extends LinearLayout implements StepsViewIndicator.OnDraw
             }
         }
     }
-
 }
