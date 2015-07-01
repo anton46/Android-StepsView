@@ -7,32 +7,33 @@
 
 **Gradle**
 ```gradle
-compile 'com.anton46:stepsview:0.0.1'
+compile 'com.anton46:stepsview:0.0.2'
 ````
 **Maven**
 ```xml
 <dependency>
     <groupId>com.anton46</groupId>
     <artifactId>stepsview</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.2</version>
 </dependency>
 ```
 
 ```xml
  <com.anton46.stepsview.StepsView
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/stepsView0"
+        android:id="@+id/stepsView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         />
 ```        
 
 ```java
-mStepsView.setLabels(steps)
-                .setColorIndicator(Color.GREEN)
-                .setBarColor(Color.GRAY)
-                .setLabelColor(Color.BLUE)
-                .setCompletedPosition(0);
+          mStepsView.setLabels(steps)
+                    .setBarColorIndicator(getContext().getResources().getColor(R.color.material_blue_grey_800))
+                    .setProgressColorIndicator(getContext().getResources().getColor(R.color.orange))
+                    .setLabelColorIndicator(getContext().getResources().getColor(R.color.orange))
+                    .setCompletedPosition(0)
+                    .drawView();
 ```
        
 
