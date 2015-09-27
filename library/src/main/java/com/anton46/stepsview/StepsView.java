@@ -126,6 +126,8 @@ public class StepsView extends LinearLayout implements StepsViewIndicator.OnDraw
 
                 if (i <= mCompletedPosition) {
                     textView.setTypeface(null, Typeface.BOLD);
+                } else {
+                    textView.setTypeface(null, Typeface.NORMAL);
                 }
 
                 mLabelsLayout.addView(textView);
