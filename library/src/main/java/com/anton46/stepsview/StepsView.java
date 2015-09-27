@@ -113,22 +113,25 @@ public class StepsView extends LinearLayout implements StepsViewIndicator.OnDraw
 
     private void drawLabels() {
         List<Float> indicatorPosition = mStepsViewIndicator.getThumbContainerXPosition();
-
         if (mLabels != null) {
             for (int i = 0; i < mLabels.length; i++) {
-                TextView textView = new TextView(getContext());
-                textView.setText(mLabels[i]);
-                textView.setTextColor(mLabelColorIndicator);
-                textView.setX(indicatorPosition.get(i));
-                textView.setLayoutParams(
-                        new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
-                                ViewGroup.LayoutParams.WRAP_CONTENT));
-
+                TextView textView = (TextView)
+                        mLabelsLayout.getChildAt(i);
+                if (textView == null) {
+                    textView = new TextView(getContext());
+                    textView.setText(mLabels[i]);
+                    textView.setTextColor(mLabelColorIndicator);
+                    textView.setX(indicatorPosition.get(i));
+                    textView.setLayoutParams(
+                            new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
+                                    ViewGroup.LayoutParams.WRAP_CONTENT));
+                    mLabelsLayout.addView(textView, i);
+                }
                 if (i <= mCompletedPosition) {
                     textView.setTypeface(null, Typeface.BOLD);
+                } else {
+                    textView.setTypeface(null, Typeface.NORMAL);
                 }
-
-                mLabelsLayout.addView(textView);
             }
         }
     }
