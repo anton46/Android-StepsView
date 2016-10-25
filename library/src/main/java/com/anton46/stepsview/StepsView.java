@@ -23,6 +23,7 @@ public class StepsView extends LinearLayout implements StepsViewIndicator.OnDraw
     private int mLabelColorIndicator = Color.BLACK;
     private int mBarColorIndicator = Color.BLACK;
     private int mCompletedPosition = 0;
+    private Typeface mTypeface = Typeface.DEFAULT;
 
     public StepsView(Context context) {
         this(context, null);
@@ -94,6 +95,11 @@ public class StepsView extends LinearLayout implements StepsViewIndicator.OnDraw
         return this;
     }
 
+    public StepsView setLabelTypeFace(Typeface typeFace) {
+        mTypeface = typeFace;
+        return this;
+    }
+
     public void drawView() {
         if (mLabels == null) {
             throw new IllegalArgumentException("labels must not be null.");
@@ -123,9 +129,14 @@ public class StepsView extends LinearLayout implements StepsViewIndicator.OnDraw
                 textView.setLayoutParams(
                         new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
                                 ViewGroup.LayoutParams.WRAP_CONTENT));
+                textView.setTypeface(mTypeface);
 
                 if (i <= mCompletedPosition) {
-                    textView.setTypeface(null, Typeface.BOLD);
+                    if (mTypeface == Typeface.DEFAULT) {
+                        textView.setTypeface(null, Typeface.BOLD);
+                    } else {
+                        textView.setTypeface(mTypeface, Typeface.BOLD);
+                    }
                 }
 
                 mLabelsLayout.addView(textView);

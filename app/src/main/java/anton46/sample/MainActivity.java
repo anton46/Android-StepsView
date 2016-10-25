@@ -3,6 +3,7 @@ package anton46.sample;
 import com.anton46.stepsview.StepsView;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -59,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
                             getContext().getResources().getColor(R.color.material_blue_grey_800))
                     .setProgressColorIndicator(getContext().getResources().getColor(R.color.orange))
                     .setLabelColorIndicator(getContext().getResources().getColor(R.color.orange))
+                    .setLabelTypeFace(Typeface.createFromAsset(getContext().getAssets(), "fonts/BoutrosART-Medium.otf"))
                     .drawView();
 
             return convertView;
