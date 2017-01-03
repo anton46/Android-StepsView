@@ -85,6 +85,7 @@ public class StepsViewIndicator extends View {
         mRightY = 0.5f * (getHeight() + mLineHeight);
         mDelta = (mRightX - mLeftX) / (mNumOfStep - 1);
 
+        mThumbContainerXPosition.clear();
         mThumbContainerXPosition.add(mLeftX);
         for (int i = 1; i < mNumOfStep - 1; i++) {
             mThumbContainerXPosition.add(mLeftX + (i * mDelta));
