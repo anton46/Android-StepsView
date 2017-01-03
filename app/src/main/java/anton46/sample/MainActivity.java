@@ -3,8 +3,6 @@ package anton46.sample;
 import com.anton46.stepsview.StepsView;
 
 import android.content.Context;
-import android.content.pm.ActivityInfo;
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -32,16 +30,6 @@ public class MainActivity extends AppCompatActivity {
 
         mListView.setAdapter(adapter);
 
-    }
-
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        if(newConfig.orientation == ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
-                || newConfig.orientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT)
-        {
-
-        }
-        super.onConfigurationChanged(newConfig);
     }
 
     public static class MyAdapter extends ArrayAdapter<String> {
