@@ -3,13 +3,13 @@
 
 ![Example image](./image1.png) ![Example image](./image2.png)
 
-## Usage
+## Installation
 
-**Gradle**
+Add to your *build.gradle* files:
 ```gradle
 compile 'com.anton46:stepsview:0.0.2'
-````
-**Maven**
+```
+#### Maven
 ```xml
 <dependency>
     <groupId>com.anton46</groupId>
@@ -17,7 +17,7 @@ compile 'com.anton46:stepsview:0.0.2'
     <version>0.0.2</version>
 </dependency>
 ```
-
+## Include StepsView in your layout
 ```xml
  <com.anton46.stepsview.StepsView
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -25,8 +25,9 @@ compile 'com.anton46:stepsview:0.0.2'
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         />
-```        
-
+```
+## Display steps
+All available options with default values:
 ```java
 mStepsView.setLabels(steps)
         .setBarColorIndicator(getContext().getResources().getColor(R.color.material_blue_grey_800))
@@ -35,7 +36,6 @@ mStepsView.setLabels(steps)
         .setCompletedPosition(0)
         .drawView();
 ```
-       
 
 Developed by
 ========================
