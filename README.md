@@ -3,7 +3,7 @@
 
 ![Example image](./image1.png) ![Example image](./image2.png)
 
-## Usage
+## Installation
 
 **Gradle**
 ```gradle
