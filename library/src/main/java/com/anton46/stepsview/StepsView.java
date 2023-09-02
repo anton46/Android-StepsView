@@ -11,6 +11,7 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -113,6 +114,8 @@ public class StepsView extends LinearLayout implements StepsViewIndicator.OnDraw
 
     private void drawLabels() {
         List<Float> indicatorPosition = mStepsViewIndicator.getThumbContainerXPosition();
+
+        mLabelsLayout.removeAllViews();
 
         if (mLabels != null) {
             for (int i = 0; i < mLabels.length; i++) {
